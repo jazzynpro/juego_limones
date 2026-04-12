@@ -13,8 +13,10 @@ const ALTURA_LIMON=20;
 let vidas=3;
 
 let puntaje=0;
+let velocidadCaida=200;
 
 function iniciar(){
+    setInterval(bajarLimon,velocidadCaida);//funcion de js recibe 2 parametros, 1 funcion y tiempo en miliseg
     dibujarSuelo();
     dibujarPersonaje();
     dibujarLimon();
@@ -80,6 +82,9 @@ function detectarPiso(){
         aparecerLimon();
         vidas=vidas-1;
         mostrarEnSpan("txtVidas",vidas);
-        alert("Perdiste!!");
+        //alert("Perdiste!!");
+        if(vidas<=0){
+            alert("GAME OVER!!");
+        }
     }
 }
