@@ -11,9 +11,9 @@ let limonY=0;
 const ANCHO_LIMON=20;
 const ALTURA_LIMON=20;
 let vidas=3;
-
 let puntaje=0;
-let velocidadCaida=200;
+let velocidadCaida=250;
+
 
 function iniciar(){
     setInterval(bajarLimon,velocidadCaida);//funcion de js recibe 2 parametros, 1 funcion y tiempo en miliseg
@@ -69,8 +69,22 @@ function detectarAtrapado(){
         aparecerLimon();
         puntaje=puntaje+1;
         mostrarEnSpan("txtPuntaje",puntaje);
-
+        }
+        if(puntaje==3){
+           velocidadCaida=200;
+           reinicioIntervalo();
+        }
+        else if(puntaje==6){
+           velocidadCaida=100;
+           reinicioIntervalo();
+        }
+        else if(puntaje==10){
+            alert("GANADOR!!");
+        }
     }
+function reinicioIntervalo(){
+    clearInterval(setInterval);
+    reinicioIntervalo=setInterval(bajarLimon,velocidadCaida);
 }
 function aparecerLimon(){
     limonX=generarAleatorio(0,canvas.width-ANCHO_LIMON);
