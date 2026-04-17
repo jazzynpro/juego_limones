@@ -16,25 +16,13 @@ body {
   margin: 0;
   padding: 20px;
 }
-/* CONTENEDOR */
-.contenedor {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
 
-  /* efecto vidrio (anime style) */
-  background: rgba(15, 23, 42, 0.4);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
 
 /* HEADER */
 .header h1 {
   font-size: 2.5rem;
   margin-bottom: 5px;
-  color: #facc15;
+  color: #ee85f2;
 }
 
 .frase {
@@ -51,12 +39,12 @@ body {
 /* CANVAS */
 canvas {
   background: rgba(0, 0, 0, 0.4);
-  border: 3px solid #facc15;
+  border: 3px solid #ff5adb;
   border-radius: 12px;
   display: block;
   margin: 20px auto;
 
-  box-shadow: 0 0 25px rgba(250, 204, 21, 0.5);
+  box-shadow: 0 0 25px rgba(228, 43, 188, 0.5);
 }
 
 /* PANEL */
@@ -68,25 +56,72 @@ canvas {
 }
 
 .card {
-  background: #1e293b;
-  padding: 15px 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+
+  padding: 12px 30px;
+  border-radius: 999px; /* forma cápsula */
+
+  border: 2px solid #fbcfe8;
+
+  /* 🎨 fondo rosado suave */
+  background: linear-gradient(
+    180deg,
+    #fff5f7 0%,
+    #ffd6e7 50%,
+    #ffc1dc 100%
+  );
+
+  /* ✨ brillo exterior + interior */
+  box-shadow:
+    0 4px 12px rgba(255, 182, 193, 0.7),
+    0 0 15px rgba(255, 105, 180, 0.6),
+    inset 0 2px 6px rgba(255,255,255,0.9),
+    inset 0 -3px 6px rgba(255,182,193,0.5);
+
+  color: #a64d79;
+  text-align: center;
+  min-width: 160px;
 }
 
 .card p {
   margin: 0;
-  font-size: 0.9rem;
-  color: #94a3b8;
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #7a1f4d; /* más oscuro */
+
+  text-shadow:
+    0 0 3px rgba(255,255,255,0.6),
+    0 0 6px rgba(255,182,193,0.5);
 }
 
 .card span {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #facc15;
+
+  color: #d81b60; /* rosa fuerte */
+
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #ff69b4,
+    0 0 12px rgba(255,105,180,0.8);
 }
 
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.8),
+    rgba(255,255,255,0.2)
+  );
+
+  pointer-events: none;
+}
 /* CONTENEDOR */
 .botones {
   margin-top: 20px;
@@ -95,23 +130,30 @@ canvas {
 /* BASE BOTONES */
 .btn {
   margin: 10px;
-  padding: 14px 22px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
+  padding: 12px 26px;
+  font-size: 18px;
+  border-radius: 999px; /* cápsula */
+  border: 2px solid rgba(255, 200, 210, 0.8);
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
 
-  /* efecto glass + brillo */
-  background: linear-gradient(145deg, #facc15, #eab308);
-  color: #1e293b;
-  box-shadow: 0 0 10px rgba(250, 204, 21, 0.4),
-              0 0 20px rgba(250, 204, 21, 0.2);
+  /* COLOR PRINCIPAL */
+  background: linear-gradient(
+    145deg,
+    #fff1f5,
+    #ffd6e7,
+    #ffc1dc
+  );
 
-  transition: all 0.25s ease;
+  color: #a64d79;
+  font-weight: bold;
+
+  /* EFECTO BRILLO SUAVE */
+  box-shadow:
+    0 4px 10px rgba(255, 182, 193, 0.5),
+    inset 0 2px 6px rgba(255,255,255,0.9),
+    inset 0 -2px 6px rgba(255,182,193,0.4);
+
+  transition: all 0.3s ease;
 }
 
 /* ICONOS */
@@ -121,38 +163,43 @@ canvas {
 
 /* HOVER */
 .btn:hover {
-  transform: translateY(-3px) scale(1.07);
-  box-shadow: 0 0 15px rgba(250, 204, 21, 0.8),
-              0 0 30px rgba(250, 204, 21, 0.5),
-              0 0 45px rgba(250, 204, 21, 0.3);
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 15px rgba(255, 182, 193, 0.9),
+    0 0 30px rgba(255, 105, 180, 0.6),
+    inset 0 2px 8px rgba(255,255,255,1);
 }
 
 /* CLICK */
-.btn:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
-}
+.btn {
+  position: relative;
+  overflow: hidden;
 
-/* IZQUIERDA */
-.btn-izq {
-  background: linear-gradient(145deg, #facc15, #f59e0b);
-}
+  margin: 10px;
+  padding: 12px 28px;
+  font-size: 18px;
 
-/* DERECHA */
-.btn-der {
-  background: linear-gradient(145deg, #facc15, #f59e0b);
-}
+  border-radius: 999px;
+  border: 2px solid #fbcfe8;
 
-/* REINICIAR (azul con glow distinto) */
-.btn-reiniciar {
-  background: linear-gradient(145deg, #38bdf8, #0ea5e9);
-  color: white;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5),
-              0 0 20px rgba(56, 189, 248, 0.3);
-}
+  cursor: pointer;
+  font-weight: bold;
+  color: #a64d79;
 
-.btn-reiniciar:hover {
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.9),
-              0 0 30px rgba(56, 189, 248, 0.6),
-              0 0 45px rgba(56, 189, 248, 0.4);
+  /* 🎀 COLOR REAL (este es el que te faltaba aplicar bien) */
+  background: linear-gradient(
+    180deg,
+    #fff5f7 0%,
+    #ffd6e7 50%,
+    #ffc1dc 100%
+  );
+
+  /* ✨ BRILLO */
+  box-shadow:
+    0 4px 12px rgba(255, 182, 193, 0.6),
+    inset 0 2px 6px rgba(255,255,255,0.9),
+    inset 0 -3px 6px rgba(255,182,193,0.5);
+
+  transition: all 0.3s ease;
 }
