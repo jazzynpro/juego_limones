@@ -10,7 +10,7 @@ let limonX=canvas.width/2;
 let limonY=0;
 const ANCHO_LIMON=20;
 const ALTURA_LIMON=20;
-let vidas=3;
+let vidas=2;
 let puntaje=0;
 let velocidadCaida=200;
 let intervalo;
@@ -27,17 +27,19 @@ function dibujarSuelo(){
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
 }
 function dibujarPersonaje(){
-    ctx.fillStyle="#eff31c";
+    ctx.fillStyle="#1325c9";
     ctx.fillRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
 function moverIzquierda(){
-    personajeX= personajeX-10;
+    personajeX=personajeX+10;
     actualizarPantalla();
     detectarAtrapado();
 }
 //mover derecha
 function moverDerecha(){
-    personajeX=personajeX+10;
+    
+
+    personajeX= personajeX-10;
     actualizarPantalla();
     detectarAtrapado();
 }
@@ -100,14 +102,14 @@ function detectarPiso(){
         mostrarEnSpan("txtVidas",vidas);
         if(vidas<=0){
             clearInterval(intervalo);
-            alert("GAME OVER!!");
+            alert("FINALIZAR JUEGO!!");
         }
     }
 }
 //funcion reiniciar
 function reiniciar(){
     clearInterval(intervalo);
-    vidas=3;
+    vidas=2;
     puntaje=0;
     velocidadCaida=200;
     personajeX=canvas.width/2;
